@@ -1,0 +1,17 @@
+public class MyArrayListTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("lab1_6: 임진영\n");
+		MyArrayList list = new MyArrayList(); // (1) MyArrayList 객체를 생성(list라고 하자)
+		
+		System.out.println(list); // (2) list를 출력
+		
+		list.add(2); // (3) list에 2를 삽입
+		list.add(-3); // (4) list에 -3을 삽입
+		list.add(0); // (5) list에 0을 삽입
+		
+		System.out.println(list); // (6) list를 출력
+	}
+
+}
