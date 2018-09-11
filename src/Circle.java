@@ -1,32 +1,32 @@
 /*
-ÆÄÀÏ¸í: Circle.java
-ÀÛ¼ºÀÚ: ÀÓÁø¿µ
-ÀÛ¼ºÀÏ: 2018. 9. 4
-ÁÖÁ¦: Å¬·¡½º ÀÛ¼º, °´Ã¼ »ı¼º°ú »ç¿ëÀ» ¿¬½À
-      ¹İÁö¸§ ¼Ó¼ºÀ» °®´Â Circle Å¬·¡½º¸¦ ÀÛ¼ºÇÏ°í »ç¿ëÇÏ´Â ÇÁ·Î±×·¥
+íŒŒì¼ëª…: Circle.java
+ì‘ì„±ì: ì„ì§„ì˜
+ì‘ì„±ì¼: 2018. 9. 4
+ì£¼ì œ: í´ë˜ìŠ¤ ì‘ì„±, ê°ì²´ ìƒì„±ê³¼ ì‚¬ìš©ì„ ì—°ìŠµ
+      ë°˜ì§€ë¦„ ì†ì„±ì„ ê°–ëŠ” Circle í´ë˜ìŠ¤ë¥¼ ì‘ì„±í•˜ê³  ì‚¬ìš©í•˜ëŠ” í”„ë¡œê·¸ë¨
  */
 
 public class Circle {
-	private int radius; // ÇÊµå(private ÀÎ½ºÅÏ½º º¯¼ö): ¹İÁö¸§(radius) - Á¤¼öÇü
+	private int radius; // í•„ë“œ(private ì¸ìŠ¤í„´ìŠ¤ ë³€ìˆ˜): ë°˜ì§€ë¦„(radius) - ì •ìˆ˜í˜•
 
-	Circle() {
+	public Circle() {
 		this.radius = 1;
-	} // ¸Å°³º¯¼ö°¡ ¾ø´Â »ı¼ºÀÚ(constructor) - ¹İÁö¸§À» 1·Î ÃÊ±âÈ­
+	} // ë§¤ê°œë³€ìˆ˜ê°€ ì—†ëŠ” ìƒì„±ì(constructor) - ë°˜ì§€ë¦„ì„ 1ë¡œ ì´ˆê¸°í™”
 
-	Circle(int radius) {
+	public Circle(int radius) {
 		this.radius = radius;
-	} // ¹İÁö¸§À» ¸Å°³º¯¼ö·Î ¹Ş¾Æ ÃÊ±âÈ­ ÇÏ´Â »ı¼ºÀÚ
+	} // ë°˜ì§€ë¦„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ë°›ì•„ ì´ˆê¸°í™” í•˜ëŠ” ìƒì„±ì
 
 	public int getRadius() {
 		return radius;
 	}
 	public void setRadius(int radius) {
 		this.radius = radius;
-	} // ¹İÁö¸§ getter/setter
+	} // ë°˜ì§€ë¦„ getter/setter
 
-	public double getVolume() {
-		return this.radius * Math.PI;
-	} // ¸éÀûÀ» °è»êÇÏ¿© ¸®ÅÏÇÏ´Â ¸Ş¼Òµå - ¿øÁÖÀ²Àº 3.14 ¶Ç´Â Math Å¬·¡½ºÀÇ »ó¼ö ÀÌ¿ë
+	public double getArea() {
+		return this.radius^2 * Math.PI;
+	} // ë©´ì ì„ ê³„ì‚°í•˜ì—¬ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ - ì›ì£¼ìœ¨ì€ 3.14 ë˜ëŠ” Math í´ë˜ìŠ¤ì˜ ìƒìˆ˜ ì´ìš©
 
 	@Override
 	public int hashCode() {
@@ -48,10 +48,10 @@ public class Circle {
 		if (radius != other.radius)
 			return false;
 		return true;
-	} // equals/hashCode ¿À¹ö¶óÀÌµå - ¹İÁö¸§ÀÌ µ¿ÀÏÇÏ¸é µ¿ÀÏÇÑ °´Ã¼·Î °£ÁÖÇÏµµ·Ï
+	} // equals/hashCode ì˜¤ë²„ë¼ì´ë“œ - ë°˜ì§€ë¦„ì´ ë™ì¼í•˜ë©´ ë™ì¼í•œ ê°ì²´ë¡œ ê°„ì£¼í•˜ë„ë¡
 
 	@Override
 	public String toString() {
-		return "Circle [¹İÁö¸§=" + radius + "]";
-	} // toString ¿À¹ö¶óÀÌµå - ¹İÁö¸§ Á¤º¸¸¦ ¹®ÀÚ¿­·Î ¸®ÅÏ
+		return "Circle [ë°˜ì§€ë¦„=" + radius + "]";
+	} // toString ì˜¤ë²„ë¼ì´ë“œ - ë°˜ì§€ë¦„ ì •ë³´ë¥¼ ë¬¸ìì—´ë¡œ ë¦¬í„´
 }
