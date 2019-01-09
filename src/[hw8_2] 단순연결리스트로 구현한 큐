@@ -1,0 +1,88 @@
+/*
+ * 파일명 : MyLinkedQueue.java
+ * 작성일: 2018년 11월 2일
+ * 작성자: 진영
+ * 내용:  연결자료구조를 이용한 큐 구현을 연습
+ */
+package hw8_2;
+
+import java.util.NoSuchElementException;
+
+public class MyLinkedQueue {
+	private class Node {
+		int data;
+		Node link;
+		
+		public Node(int data) {
+			this.data = data;
+		}
+	}
+	
+	private Node front;
+	private Node rear;
+	private int count;
+
+	public MyLinkedQueue() {
+		front = null;
+		rear = null;
+		count = 0;
+	}
+
+	public boolean isEmpty() {
+		return count == 0;
+	}
+
+	public void enQueue(int n) {
+		Node newNode = new Node(n);
+		if(isEmpty()) {
+			front = newNode;
+			rear = newNode;
+		}			
+		else {
+			rear.link = newNode;
+			rear = newNode;
+		}
+		count++;
+	}
+
+	public int deQueue() {
+		if(isEmpty())
+			throw new NoSuchElementException();
+		else {
+			int d = front.data;
+			front = front.link;
+			if (front == null)
+				rear = null;
+			count--;
+			return d;
+		}
+	}
+
+	public int peek() {
+		if(isEmpty())
+			throw new NoSuchElementException();
+		return front.data;
+	}
+
+	public int size() {
+		return count;
+	}
+}
+
+/*
+ 노드 클래스
+
+인스턴스 변수:
+  front
+  rear
+  큐에 저장된 원소 수
+
+메소드:
+  생성자 - 인스턴스 변수 초기화
+  isEmpty
+  enQueue 
+  deQueue - 배열이 비어서 삭제할 수 없을 때는 예외 발생(java.util 패키지의 NoSuchElementException 예외를 발생시킬 것)
+  peek - 배열이 비어서 조회할 수 없을 때는 예외 발생(java.util 패키지의 NoSuchElementException 예외를 발생시킬 것)
+  size - 큐에 저장된 원소 수를 리턴
+  ** 이 외의 public 메소드는 두지 말 것
+  */
