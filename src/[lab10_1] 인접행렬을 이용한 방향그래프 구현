@@ -1,0 +1,73 @@
+/*
+ * 파일명: DirectedMatrixGraph.java
+ * 작성일: 2018.11.26
+ * 작성자: 진영
+ * 설명: directed graph를 표현하는 추상자료형인 DirectedMatrixGraph 클래스를 정의하고 이를 이용하는 프로그램
+        adjacency matrix를 이용한 directed graph 구현을 연습
+ */
+package lab10_1;
+
+// adjacency matrix로 방향 그래프를 구현하는 클래스
+public class DirectedMatrixGraph {
+
+	//private 인스턴스 변수 : 구현에 필요한 변수들을 선언
+	int[][] matrix;
+	private int n; // 혹여 정점이 삭제될 경우에 대비, 정점의 수를 받을 정수 n 선언
+
+	// 생성자
+	public DirectedMatrixGraph(int n) {
+		matrix = new int[n][n];
+		this.n = n;
+	}
+
+	// hasEdge : 간선을 이루는 두개의 정점 v1, v2를 매개변수로 받아 이 간선 존재 여부를 리턴
+	public boolean hasEdge(int v1, int v2) {
+		if(matrix[v1][v2] == 1)
+			return true;
+		else
+			return false;
+	}
+	// addEdge : 간선을 이루는 두개의 정점 v1, v2를 매개변수로 받아 그래프에 간선을 추가
+	public void addEdge(int v1, int v2) {
+		if(isValid(v1,v2))
+			System.out.printf("간선 삽입 오류 - 잘못된 정점 번호입니다. <%d, %d>\n",v1, v2);
+		else {
+			if(hasEdge(v1, v2))
+				System.out.printf("간선 삽입 오류 - 이미 존재하는 간선입니다. <%d, %d>\n",v1, v2);
+			else {
+				matrix[v1][v2] = 1;
+			}
+		}
+	}
+
+	public boolean isValid(int v1, int v2) {
+		if(v1<0 || v1>=n || v2<0 || v2>=n || v1==v2)
+			return true;
+		else
+			return false;
+	}
+
+	public void printAdjacentVertices(int v) {
+		for(int i=0; i<n; i++)
+			if(matrix[v][i] == 1)
+				System.out.printf("%d ",i);
+		System.out.println();
+	}
+}
+
+/*
+	adjacency matrix로 방향 그래프를 구현하는 클래스임
+
+ 	private 인스턴스 변수:
+ 	   구현에 필요한 변수들을 선언
+
+	public 메소드:
+	   생성자 : 정점수 n을 매개변수로 받아 정점은 n개이고 간선은 없는 초기 그래프를 생성
+	            이 때, 정점수 n의 크기를 제한하면 안됨(예를 들어 n이 100 이하만 작동하게 하면 안됨)
+	   hasEdge : 간선을 이루는 두개의 정점 v1, v2를 매개변수로 받아 이 간선 존재 여부를 리턴
+	   addEdge : 간선을 이루는 두개의 정점 v1, v2를 매개변수로 받아 그래프에 간선을 추가
+ ** 잘못된 정점 번호인 경우 삽입하지 않고 오류 메시지 출력
+ ** 이미 존재하는 간선인 경우(hasEdge 호출) 삽입하지 않고 오류 메시지 출력    
+	   printAdjacentVertices : 정점을 매개변수로 받아 그 정점에 인접한 정점들을 모두 출력
+	 잘못된 정점 번호인 경우 오류 메시지 출력
+ */
